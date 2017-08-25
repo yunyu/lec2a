@@ -3,44 +3,29 @@
  * Class: CS3251
  *
  * @author Julie A. Adams, G. Hemingway
- * Description: This file implements an abstract data type stack class using 
+ * Description: This file implements an abstract data type stack class using
  *              data hiding.
  */
 
 #include "StackwoExcep.h"
 
+Stack::Stack(uint32_t size) : stackTop(0), size(size), stack(new T[size]) {}
 
-Stack::Stack (size_t size): _top(0), _size(size), _stack(new T[size]) {}
-
-
-Stack::~Stack() {
-  delete [] _stack;
-}
-
+Stack::~Stack() { delete[] stack; }
 
 void Stack::push(const T &item) {
-  _stack[_top] = item;
-  _top++;
+  stack[stackTop] = item;
+  stackTop++;
 }
 
-
-void Stack::pop(T &item) {
-  item = _stack[--_top];
-}
-
+void Stack::pop(T &item) { item = stack[--stackTop]; }
 
 int Stack::top(T &item) {
-  item = _stack[_top - 1];
+  item = stack[stackTop - 1];
 
   return item;
 }
 
+bool Stack::isEmpty(void) const { return stackTop == 0; }
 
-bool Stack::isEmpty(void) const {
-  return _top == 0;
-}
-
-
-bool Stack::isFull(void) const {
-  return _top == _size;
-}
+bool Stack::isFull(void) const { return stackTop == size; }

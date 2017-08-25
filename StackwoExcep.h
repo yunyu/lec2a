@@ -17,23 +17,21 @@ typedef int T;
 
 class Stack {
 public:
+  /* Constructors */
+  Stack(uint32_t size);
 
-    /* Constructors */
-    Stack (size_t size);
+  /* Destructor */
+  ~Stack(void);
 
-    /* Destructor */
-    ~Stack(void);
-
-    void push(const T &item);
-    void pop (T &item);
-    int top(T &cur_top);
-    bool isEmpty(void) const;
-    bool isFull(void) const;
+  void push(const T &item);
+  void pop(T &item);
+  int top(T &cur_top);
+  bool isEmpty(void) const;
+  bool isFull(void) const;
 
 private:
-    size_t _top, _size;
-    T *_stack;
+  uint32_t stackTop, size;
+  T *stack;
 };
 
 #endif
-

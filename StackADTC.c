@@ -7,42 +7,42 @@
 #include "StackADTC.h"
 
 
-int Stack_create(Stack *s, size_t size) {
-    s->_stack = malloc(size * sizeof(T));
-    s->_top = 0;
-    s->_size = size;
-    return s->_stack == 0 ? -1 : 0;
+int Stack_create(Stack *s, uint32_t size) {
+    s->stack = malloc(size * sizeof(T));
+    s->top = 0;
+    s->size = size;
+    return s->stack == 0 ? -1 : 0;
 }
 
 void Stack_destroy(Stack *s) {
-    if (s->_stack != NULL) {
-        free((void *)s->_stack);
+    if (s->stack != NULL) {
+        free((void *)s->stack);
     }
-    s->_stack = NULL;
-    s->_top = 0;
-    s->_size = 0;
-    s->_stack = 0;
+    s->stack = NULL;
+    s->top = 0;
+    s->size = 0;
+    s->stack = 0;
 }
 
 void Stack_push(Stack *s, T item) {
-    s->_stack[s->_top] = item;
-    s->_top++;
+    s->stack[s->top] = item;
+    s->top++;
 }
 
 void Stack_pop(Stack *s, T *item) {
-    *item = s->_stack[--s->_top];
+    *item = s->stack[--s->top];
 }
 
 int Stack_top(Stack *s, T *item) {
-    *item = s->_stack[s->_top - 1];
+    *item = s->stack[s->top - 1];
 
     return *item;
 }
 
 int Stack_is_empty(Stack *s) {
-    return s->_top == 0;
+    return s->top == 0;
 }
 
 int Stack_is_full(Stack *s) {
-    return s->_top >= s->_size;
+    return s->top >= s->size;
 }

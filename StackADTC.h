@@ -6,16 +6,18 @@
 #ifndef STACKADTC_H
 #define STACKADTC_H
 
+#include <stdint.h>
+
 // Type of Stack element
 typedef int T;
 
 typedef struct {
-    size_t _top, _size;
-    T *_stack;
+  uint32_t top, size;
+  T *stack;
 } Stack;
 
 // Stack interface
-int Stack_create(Stack *s, size_t size);
+int Stack_create(Stack *s, uint32_t size);
 void Stack_destroy(Stack *s);
 void Stack_push(Stack *s, T item);
 void Stack_pop(Stack *s, T *item);
@@ -27,4 +29,3 @@ int Stack_is_empty(Stack *);
 int Stack_is_full(Stack *);
 
 #endif
-

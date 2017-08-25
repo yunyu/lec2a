@@ -34,6 +34,8 @@ int  main () {
     Stack_pop (&stack2, &item);                 // Pop a couple of items from the stack
     Stack_top (&stack2, &top_item);
     printf("Top of stack2: %d\n", top_item);
+    Stack_top (&stack1, &top_item);
+    printf("Top of stack1: %d\n", top_item);
 
     Stack_destroy(&stack1);
     Stack_destroy(&stack2);                     // Disaster!!!  Why does this fail?
